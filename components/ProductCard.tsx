@@ -16,7 +16,7 @@ export function ProductCard({ product }: ProductCardProps) {
      product.imageUrl.startsWith('https://') ||
      product.imageUrl.startsWith('/'));
 
-  const imageSrc = isValidUrl ? product.imageUrl : "/placeholder.jpg";
+  const imageSrc: string = isValidUrl ? product.imageUrl : "/placeholder.jpg";
 
   return (
     <Link href={`/p/${product.id}`} className="group">

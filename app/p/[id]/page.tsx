@@ -44,7 +44,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
      product.imageUrl.startsWith('https://') ||
      product.imageUrl.startsWith('/'));
 
-  const imageSrc = isValidUrl ? product.imageUrl : "/placeholder.jpg";
+  const imageSrc: string = isValidUrl ? product.imageUrl : "/placeholder.jpg";
 
   return (
     <main className="min-h-screen bg-slate-50">
