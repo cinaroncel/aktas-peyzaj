@@ -1,3 +1,9 @@
+import { config } from 'dotenv';
+import { resolve } from 'path';
+
+// Load .env.local file
+config({ path: resolve(process.cwd(), '.env.local') });
+
 import QRCode from 'qrcode';
 import { writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
