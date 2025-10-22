@@ -11,12 +11,13 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   // Check if imageUrl is valid (starts with http:// or https:// or /)
-  const isValidUrl = product.imageUrl &&
+  const imageSrc: string =
+    product.imageUrl &&
     (product.imageUrl.startsWith('http://') ||
      product.imageUrl.startsWith('https://') ||
-     product.imageUrl.startsWith('/'));
-
-  const imageSrc: string = isValidUrl ? product.imageUrl : "/placeholder.jpg";
+     product.imageUrl.startsWith('/'))
+      ? product.imageUrl
+      : "/placeholder.jpg";
 
   return (
     <Link href={`/p/${product.id}`} className="group">

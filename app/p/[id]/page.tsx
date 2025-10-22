@@ -39,12 +39,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   // Check if imageUrl is valid
-  const isValidUrl = product.imageUrl &&
+  const imageSrc: string =
+    product.imageUrl &&
     (product.imageUrl.startsWith('http://') ||
      product.imageUrl.startsWith('https://') ||
-     product.imageUrl.startsWith('/'));
-
-  const imageSrc: string = isValidUrl ? product.imageUrl : "/placeholder.jpg";
+     product.imageUrl.startsWith('/'))
+      ? product.imageUrl
+      : "/placeholder.jpg";
 
   return (
     <main className="min-h-screen bg-slate-50">
