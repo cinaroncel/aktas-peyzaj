@@ -36,8 +36,7 @@ async function fetchProducts(): Promise<Product[]> {
     scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
   });
 
-  const authClient = await auth.getClient();
-  const sheets = google.sheets({ version: 'v4', auth: authClient });
+  const sheets = google.sheets({ version: 'v4', auth });
 
   // Pull all data from the first sheet starting at row 2 (to skip header).
   const range = 'A2:I';
