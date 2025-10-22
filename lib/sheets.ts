@@ -47,17 +47,25 @@ export async function getProducts(): Promise<Product[]> {
     // Parse rows into Product objects
     // Expected columns: id | name | priceCents | currency | type | category | description | imageUrl | inStock
     const products: Product[] = rows
-      .map((row) => {
+      .map((row): Product | null => {
         try {
+          const id = String(row[0] || '').trim();
+          const name = String(row[1] || '').trim();
+
+          // Skip empty rows
+          if (!id || !name) {
+            return null;
+          }
+
           return {
-            id: String(row[0] || '').trim(),
-            name: String(row[1] || '').trim(),
+            id,
+            name,
             priceCents: parseInt(String(row[2] || '0'), 10),
             currency: String(row[3] || 'TRY').trim(),
             type: String(row[4] || '').trim(),
             category: String(row[5] || '').trim(),
             description: String(row[6] || '').trim(),
-            imageUrl: String(row[7] || '').trim(),
+            imageUrl: String(row[7] || '').trim() || undefined,
             inStock: String(row[8] || 'true').toLowerCase() === 'true',
           };
         } catch (error) {
@@ -65,10 +73,7 @@ export async function getProducts(): Promise<Product[]> {
           return null;
         }
       })
-      .filter((product): product is Product => {
-        // Filter out null values and invalid products
-        return product !== null && product.id !== '' && product.name !== '';
-      });
+      .filter((product): product is Product => product !== null);
 
     return products;
   } catch (error) {
