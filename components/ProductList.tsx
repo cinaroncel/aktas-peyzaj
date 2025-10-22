@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Product } from '@/lib/products';
-import ProductCard from '@/components/ProductCard';
+import { ProductCard } from '@/components/ProductCard';
 
 export interface ProductListProps {
   products: Product[];
