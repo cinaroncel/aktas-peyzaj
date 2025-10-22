@@ -6,7 +6,7 @@ export interface Product {
   type: string;
   category: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
   inStock: boolean;
 }
 

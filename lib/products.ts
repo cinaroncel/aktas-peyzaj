@@ -1,19 +1,5 @@
 import { google } from 'googleapis';
-
-/**
- * Represents a single plant product.
- */
-export interface Product {
-  id: string;
-  name: string;
-  priceCents: number;
-  currency: string;
-  type: string;
-  category: string;
-  description: string;
-  imageUrl?: string;
-  inStock: boolean;
-}
+import { Product } from './types';
 
 // Cache for memoization in serverless environments.
 let cachedProducts: Product[] | null = null;
